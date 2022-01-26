@@ -1,22 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Counter } from './features/counter/Counter';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // Component templates
 import Header  from 'components/header';
 // Page templates
 
-import {BrowserRouter as Router, Routes, Route, useLocation} from 'react-router-dom';
-
-import Styled, { css, createGlobalStyle }  from 'styled-components';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Styled, { createGlobalStyle }  from 'styled-components';
 import {SwitchTransition , CSSTransition } from "react-transition-group";
-
+import { ShowMobileMenuState } from './api/MobileMenuSlice';
 import Home from './page-templates/Home';
 import LayoutTemplates from './page-templates/LayoutTemplates';
 import SingleLayout from './page-templates/SingleLayout';
 import Footer from './components/Footer';
 import Contact from './page-templates/Contact';
 import SearchPage from './page-templates/SearchPage';
-
+import { MobileNavigation } from './components/Navigation';  
 const About = (props:any) => {
   return(
     <h1>About</h1>
@@ -24,8 +24,6 @@ const About = (props:any) => {
 }
 
 const Element = () => {
-  const location = useLocation();
-
   const routes = [
     { path: '/', name: 'Home', Component: Home },
     { path: '/giao-dien-mau', name: 'Layout', Component: LayoutTemplates },
@@ -59,13 +57,20 @@ const Element = () => {
     </Routes>
   )
 }
-function App() {
+
+const App = () => {
+  const isMobileShow = useSelector(ShowMobileMenuState);
   return (
     <Router>
         <GlobalStyle />
-        <Header />
-        <Element />
-        <Footer />
+        <main id="outer-container">
+        <MobileNavigation open={isMobileShow}/>
+          <div id="page-wrap">
+            <Header />
+            <Element />
+            <Footer />
+          </div>
+        </main>
     </Router>
   );
 }
@@ -132,4 +137,40 @@ const GlobalStyle = createGlobalStyle`
     transform: translateX(30px);
     transition: opacity 300ms, transform 300ms;
   }
+  /*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: black;
+  padding: .75rem;
+  font-size: 1em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: black;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
 `

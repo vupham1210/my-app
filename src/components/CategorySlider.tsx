@@ -87,7 +87,7 @@ export const CategoryTemplates = Styled.div`
   margin: 0px 10px;
   transition: all .3s ease-in-out;
   cursor: pointer;
-  border-bottom: 2px solid black;
+  border-radius: 0.5rem;
   &:hover{
     background: #b9b29a;
   }

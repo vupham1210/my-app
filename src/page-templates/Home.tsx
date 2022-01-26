@@ -1,10 +1,11 @@
 import {Link} from 'react-router-dom';
 import Styled from 'styled-components';
 import {Container, Row, Col, Button} from 'react-bootstrap';
-import {BusinessOutline, ReaderOutline, CartOutline } from 'react-ionicons'
-
+import {BusinessOutline, ReaderOutline, CartOutline, ReturnDownForwardOutline } from 'react-ionicons'
+import {useWindowWidth} from "@react-hook/window-size";
 import ReactHtmlParser from 'react-html-parser';
-import ParticleHome from '../components/ParticleHome';
+import LayoutHome from '../components/LayoutHome';
+// import ParticleHome from '../components/ParticleHome';
 // Import Images 
 import ProcessImg from '../imgs/process-bg-e.jpg';
 import HomeBackground from '../imgs/background.jpg';
@@ -14,18 +15,9 @@ import TimeLine_3 from '../imgs/qt3.png';
 import TimeLine_4 from '../imgs/qt4.png';
 import TimeLine_5 from '../imgs/qt5.png';
 
-import Sdip_1 from '../imgs/landing-home-1.jpg';
-import Sdip_2 from '../imgs/landing-home-2.jpg';
-import Sdip_3 from '../imgs/landing-home-3.jpg';
-import Sdip_4 from '../imgs/landing-home-4.jpg';
-import Sdip_5 from '../imgs/landing-home-5.jpg';
-import Sdip_6 from '../imgs/landing-home-6.jpg';
-import Sdip_7 from '../imgs/landing-home-7.jpg';
-import Sdip_8 from '../imgs/landing-home-8.jpg';
-
 import CategorySlider from '../components/CategorySlider';
 
-
+import IntroduceImg from '../imgs/branding.png';
 // Banner Section 
 import BackgrounSectionBanner from '../imgs/bg-1.jpg';
 import bg_banner_1 from '../imgs/blog8.jpg';
@@ -46,48 +38,6 @@ const Flip = require('react-reveal/Flip');
 const Fade = require('react-reveal/Fade');
 
 
-const Layout = [
-   {
-     image: Sdip_1,
-     title: 'STACKED PORTFOLIO',
-     description: 'WPBAKERY PAGE BUILDER </br> ELEMENTOR PAGE BUILDER',
-  }, 
-    {
-      image: Sdip_2,
-      title: 'STACKED PORTFOLIO',
-      description: 'WPBAKERY PAGE BUILDER </br> ELEMENTOR PAGE BUILDER',
-  }, 
-  {
-    image: Sdip_3,
-    title: 'STACKED PORTFOLIO',
-    description: 'WPBAKERY PAGE BUILDER </br> ELEMENTOR PAGE BUILDER',
-  }, 
-  {
-    image: Sdip_4,
-    title: 'STACKED PORTFOLIO',
-    description: 'WPBAKERY PAGE BUILDER </br> ELEMENTOR PAGE BUILDER',
-  }, 
-  {
-    image: Sdip_5,
-    title: 'STACKED PORTFOLIO',
-    description: 'WPBAKERY PAGE BUILDER </br> ELEMENTOR PAGE BUILDER',
-  }, 
-  {
-    image: Sdip_6,
-    title: 'STACKED PORTFOLIO',
-    description: 'WPBAKERY PAGE BUILDER </br> ELEMENTOR PAGE BUILDER',
-  }, 
-  {
-    image: Sdip_7,
-    title: 'STACKED PORTFOLIO',
-    description: 'WPBAKERY PAGE BUILDER </br> ELEMENTOR PAGE BUILDER',
-  }, 
-  {
-    image: Sdip_8,
-    title: 'STACKED PORTFOLIO',
-    description: 'WPBAKERY PAGE BUILDER </br> ELEMENTOR PAGE BUILDER',
-  }, 
-];
 const TimeLine = [
   {
     Title: 'Tìm hiểu và tư vấn xây dựng Website',
@@ -117,10 +67,25 @@ const TimeLine = [
 ];
 
 const Home = (props:any) => {
+  const width:number = useWindowWidth();
   return(
     <>
     <HeaderBanner>
-      <ParticleHome />
+      {
+          width > 855 ? 
+            <BrandingLogo>
+                <Fade bottom>
+                  <img className='w-100' src={IntroduceImg} />
+                </Fade>
+            </BrandingLogo>
+          // <ParticleHome /> 
+          : 
+          <BrandingLogo>
+              <Fade bottom>
+                <img className='w-100' src={IntroduceImg} />
+              </Fade>
+          </BrandingLogo>
+      }
     </HeaderBanner>
     <ProcessSection>
         <Container className="m-auto">
@@ -157,21 +122,8 @@ const Home = (props:any) => {
           <Row>
             <Col xs={12}>
                 <Flip cascade left>
-                  <ul className="list-unstyled row">
-                    {
-                      Layout.map((val, index) => (
-                        <ListlayoutItems key={index} className="col-12 col-md-4">
-                          <LayoutItems>
-                              <LayoutItemsThumbnail>
-                                <img src={val.image} />
-                                <h4 className="fw-bolder">{ReactHtmlParser(val.description)}</h4>
-                              </LayoutItemsThumbnail>
-                              <h3 className="fw-bolder">{val.title}</h3>
-                          </LayoutItems>
-                        </ListlayoutItems>
-                      ))
-                    }
-                  </ul>
+                  <h3 className='fw-bolder text-center mb-3'>HÃY CHỌN NHU CẦU THIẾT KẾ WEBSITE CỦA BẠN</h3>
+                  <LayoutHome />
                 </Flip>
               </Col>
             </Row>
@@ -185,9 +137,9 @@ const Home = (props:any) => {
                 <h3 className='fw-bolder text-center mb-3'>HÃY CHỌN NHU CẦU THIẾT KẾ WEBSITE CỦA BẠN</h3>
               </Fade>
               <Fade cascade bottom>
-                  <ul className="CallToActSection list-unstyled d-flex flex-wrap">
-                      <li className='col-12 col-md-4 d-block'>
-                        <CallToActSimple className="text-center">
+                  <Row>
+                      <Col xs={4}>
+                        <CallToActSimple className="shadow text-center">
                           <BusinessOutline
                                   width={'45px'} 
                                   height={'45px'}
@@ -197,8 +149,8 @@ const Home = (props:any) => {
                           <h3 className="fw-bolder">GIỚI THIỆU - DOANH NGHIỆP</h3>
                           <p>Phát triển và thúc đẩy doanh nghiệp, gia tăng giá trị thương hiệu</p>
                         </CallToActSimple>
-                        </li>
-                      <li className='col-12 col-md-4 d-block'>
+                      </Col>
+                      <Col xs={4}>
                         <CallToActAdvandce>
                             <ReaderOutline
                                 width={'45px'} 
@@ -210,9 +162,9 @@ const Home = (props:any) => {
                               <p className="text-light">Bạn chỉ cần tập trung vào dịch vụ của mình, Phát triển tất cả chức năng phù hợp với nhu cầu của bạn hãy để chúng tôi</p>
                               <StyledButton variant='custom position-relative border text-white rounded-0'><span>Xem thêm</span></StyledButton>
                         </CallToActAdvandce>
-                      </li>
-                      <li className='col-12 col-md-4 d-block'> 
-                        <CallToActSimple className="text-center">
+                      </Col>
+                      <Col xs={4}>
+                        <CallToActSimple className="shadow text-center">
                           <CartOutline
                                 width={'45px'} 
                                 height={'45px'}
@@ -222,8 +174,8 @@ const Home = (props:any) => {
                            <h3 className="fw-bolder">SHOP BÁN HÀNG</h3>
                            <p>Bạn chỉ cần nâng cao chất lượng diện mạo thương hiệu, tiếp cận với nhiều khách hàng tiềm năng</p>
                         </CallToActSimple>
-                     </li>
-                  </ul>
+                        </Col>
+                  </Row>
                   <h4 className='text-center mb-3'><strong>HOẶC CHỌN THEO NGHÀNH NGHỀ CỦA BẠN ĐỂ CHỌN GIAO DIỆN PHÙ HỢP NHẤT</strong></h4>
                   <div className="py-4">
                       <CategorySlider />
@@ -372,6 +324,11 @@ export const Sep = Styled.span`
   display: block;
   margin: 20px 0px;
   border-radius: 4px;
+`;
+export const BrandingLogo = Styled.div`
+  max-width: 500px;
+  margin: auto;
+  padding: 50px;
 `;
 export const Section = Styled.section`
   padding: 75px 0px;
@@ -606,9 +563,6 @@ export const CallToActAdvandce = Styled.div`
   padding: 20px
   box-shadow: 0px 0px 8px -5px;
   background: #e1dbc9;
-  padding: 30px;
-  height: 130%;
-  margin-top: -10%;
   background: url(${HomeBackground});
   background-size: cover;
   background-repeat: no-repeat;
@@ -652,7 +606,7 @@ export const CallToActSimple = Styled.div`
   background: white;
   padding: 20px
   box-shadow: 0px 0px 8px -5px;
-  background: #e1dbc9;
+  background: white;
   padding: 30px;
   span{
     padding: 15px;

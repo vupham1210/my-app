@@ -62,7 +62,7 @@ export const StyledTermLink = Styled(Link)`
 
 export const Templates = Styled.div`
   box-shadow: 0px 0px 5px -3px;
-  margin-bottom: 35px;
+  margin-bottom: 45px;
   background: white;
   border-radius: 5px;
   &:hover{

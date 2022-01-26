@@ -106,7 +106,7 @@ const LayoutHome = () => {
   return (
     <Row>
         <Col xs={12}>
-            <Row className="mb-3 align-items-center">
+            <Row className="mb-3 align-items-center py-3">
               <Col>
                   <Button variant='outline-dark me-2 mb-0' onClick={() => {setIsList(true)}}>
                     <ListOutline
@@ -194,8 +194,8 @@ export const StyledReactPaginate = Styled(ReactPaginate)`
     a{
       display: block;
       min-width: 30px;
-      padding: 7px 5px;
-      background: black;
+      padding: 2px 5px;
+      background: #717d8a;
       color: white !important;
       text-decoration: unset;
       margin: 2px;

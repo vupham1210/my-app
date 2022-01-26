@@ -4,6 +4,7 @@ import categoryReducer from '../api/Category';
 import templatesReducer from '../api/Layout';
 import singleReducer from '../api/Post';
 import ModalReducer from '../api/ModalSearch';
+import MobileMenuReducer from '../api/MobileMenuSlice'
 //import SagaMiddleware from 'redux-saga';
 //import rootSaga from './rootSaga';
 
@@ -15,6 +16,7 @@ const reducer = {
   templates: templatesReducer,
   posts: singleReducer,
   modal: ModalReducer,
+  mobilemenu: MobileMenuReducer
 };
 export const store = configureStore({
   reducer,

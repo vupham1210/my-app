@@ -57,7 +57,6 @@ const ParticleHome = () => {
         maxParticles={8000}
         particleOptions={particleOptions}
         mouseMoveForce={motionForce}
-        touchMoveForce={motionForce}
         backgroundColor="unset"
       />
     </>
