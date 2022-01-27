@@ -33,10 +33,10 @@ import overlay_banner_5 from '../imgs/11.png';
 // 
 import banner_tk_web from '../imgs/thiet-ke-website.png';
 import banner_tk_web2 from '../imgs/bg_gt_3.png';
+import LineAnimation from '../components/LineAnimation';
 
 const Flip = require('react-reveal/Flip');
 const Fade = require('react-reveal/Fade');
-
 
 const TimeLine = [
   {
@@ -66,26 +66,19 @@ const TimeLine = [
   },
 ];
 
+// <ParticleHome />
+
 const Home = (props:any) => {
   const width:number = useWindowWidth();
   return(
     <>
+    <LineAnimation />
     <HeaderBanner>
-      {
-          width > 855 ? 
-            <BrandingLogo>
-                <Fade bottom>
-                  <img className='w-100' src={IntroduceImg} />
-                </Fade>
-            </BrandingLogo>
-          // <ParticleHome /> 
-          : 
-          <BrandingLogo>
-              <Fade bottom>
-                <img className='w-100' src={IntroduceImg} />
-              </Fade>
-          </BrandingLogo>
-      }
+        <BrandingLogo>
+          <Fade bottom>
+            <img className='w-100' src={IntroduceImg} />
+          </Fade>
+      </BrandingLogo>
     </HeaderBanner>
     <ProcessSection>
         <Container className="m-auto">
@@ -118,16 +111,14 @@ const Home = (props:any) => {
       </ProcessSection>
       
       <LayoutSection>
-        <Container>
-          <Row>
-            <Col xs={12}>
-                <Flip cascade left>
-                  <h3 className='fw-bolder text-center mb-3'>HÃY CHỌN NHU CẦU THIẾT KẾ WEBSITE CỦA BẠN</h3>
-                  <LayoutHome />
-                </Flip>
-              </Col>
+            <Row>
+              <Col xs={12}>
+                  <Flip cascade left>
+                    <h3 className='fw-bolder text-center mb-3'>HÃY CHỌN NHU CẦU THIẾT KẾ WEBSITE CỦA BẠN</h3>
+                    <LayoutHome />
+                  </Flip>
+                </Col>
             </Row>
-          </Container>
         </LayoutSection>
         <CallToActSection>
         <Container className="m-auto">

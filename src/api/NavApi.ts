@@ -8,54 +8,54 @@ export const MenuItems = [
     submenu: [
       {
         name: 'Thiết kế website',
-        path: '/dich-vu/',
+        path: '/dich-vu/thiet-ke-website',
       },{
         name: 'Quản trị webiste',
-        path: '/dich-vu/',
+        path: '/dich-vu/quan-tri-website',
       },{
         name: 'Marketing Online',
-        path: '/dich-vu/',
+        path: '/dich-vu/marketing-online',
       },{
         name: 'Google Ads',
-        path: '/dich-vu/',
+        path: '/dich-vu/google-ads',
       },{
         name: 'Viết bài chuẩn Seo',
-        path: '/dich-vu/',
+        path: '/dich-vu/viet-bai-chuan-seo',
       }
     ]
   },{
     name: 'Bảng giá',
-    path: '/dich-vu/',
+    path: '/bang-gia/',
   },{
     name: 'Giao diện website mẫu',
     path: '/giao-dien-mau/', 
     submenu: [{
         name: 'Mẫu website bán hàng',
-        path: '/dich-vu/',
+        path: '/giao-dien-mau//website-ban-hang/',
       },{
         name: 'Mẫu website giới thiệu',
-        path: '/dich-vu/',
+        path: '/giao-dien-mau/website-gioi-thieu/',
       },{
         name: 'Mẫu website thời trang',
-        path: '/dich-vu/',
+        path: '/giao-dien-mau/website-thoi-trang/',
       },{
         name: 'Mẫu website BĐS',
-        path: '/dich-vu/',
+        path: '/giao-dien-mau/website-bat-dong-san/',
       },{
         name: 'Mẫu website du lịch',
-        path: '/dich-vu/',
+        path: '/giao-dien-mau/website-du-lich/',
       },{
         name: 'Mẫu website Khách sạn',
-        path: '/dich-vu/',
+        path: '/giao-dien-mau/website-khach-san/',
       },{
         name: 'Mẫu website xây dựng',
-        path: '/dich-vu/',
+        path: '/giao-dien-mau/website-xay-dung/',
       }]
   },{
     name: 'Các dự án',
-    path: '/dich-vu/',
+    path: '/du-an/',
   },{
     name: 'Liên hệ',
-    path: '/dich-vu/',
+    path: '/lien-he/',
   },
 ]

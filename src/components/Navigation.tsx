@@ -19,7 +19,7 @@ export const Navigation = () => {
               val.submenu != undefined ?
               <NavItemsDropDown className={'nav-item position-relative rotationDropdown'}>
                 <Nav>
-                  <Link className='px-3 text-light text-decoration-none' to={val.path} state="page">{val.name}</Link>
+                  <Link className='px-4 text-light text-decoration-none' to={val.path} state="page">{val.name}</Link>
                   <ChevronDownOutline color={'white'}/>
                 </Nav>
                  <Nav.Item className="rotationDropdownItems">
@@ -183,6 +183,7 @@ export const StyledMobileNav = Styled(Nav)`
     padding: 5px 0px;
     display: block;
     width: 200px;
+    font-size: 1.2rem
   }
 `
 export const NavItemsDropDown = Styled.div`

@@ -28,8 +28,8 @@ const Element = () => {
     { path: '/', name: 'Home', Component: Home },
     { path: '/giao-dien-mau', name: 'Layout', Component: LayoutTemplates },
     { path: '/mau-website-demo/:slug', name: 'Layout', Component: SingleLayout },
-    { path: '/about', name: 'About', Component: About },
-    { path: '/contact', name: 'Contact', Component: Contact },
+    { path: '/gioi-thieu', name: 'About', Component: About },
+    { path: '/lien-he', name: 'Contact', Component: Contact },
     { path: '/tim-kiem', name: 'Search', Component: SearchPage },
   ]
 

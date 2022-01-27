@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {Link, useLocation } from "react-router-dom";
 import { useAppDispatch } from '../app/hooks';
 import {showModal, ShowModalState} from '../api/ModalSearch';
@@ -22,24 +22,31 @@ const SearchNavigation = () => {
 }
 
 const Header = () => {
+
   const dispatch = useAppDispatch();
   const isShowModal = useSelector(ShowModalState);
   const isMobileShow = useSelector(ShowMobileMenuState);
   const location = useLocation();
   const width:number = useWindowWidth();
+  const [fixed, setFixed] = useState<boolean>(false);
+
+  useEffect(() => {
+    window.onscroll = (e:any) => {
+      window.scrollY > 300 ? setFixed(true) : setFixed(false);
+    }
+  })
 
   useEffect(() => {
     dispatch(showModal(false));
     dispatch(showMobileMenu(false));
   },[dispatch, location.pathname])
 
-  const handleClose = () => dispatch(showModal(false));
+ const handleClose = () => dispatch(showModal(false));
   
   return(
     <>  
       <GlobalStyle />
-        <HeaderContainer>
-          <Container>
+        <HeaderContainer className={ fixed ? 'fixed' : '' }>
             <Navbar className='align-items-center justify-content-between'>
               <Navbar.Brand href="#home">
                 <Link to={'/'}>
@@ -54,7 +61,6 @@ const Header = () => {
                 {width <= 855 ? <Buger /> : '' }
               </FlexButton>
             </Navbar> 
-            </Container>
         </HeaderContainer>
         <Modal 
           show={isShowModal} 
@@ -85,6 +91,13 @@ export const FlexButton = Styled.div`
 export const HeaderContainer = Styled.div`
   background: black;
   border-bottom: 2px solid #585442;
+  &.fixed{
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%
+  }
 `
 export const SearchContainer = Styled.div`
   width: 100%;
